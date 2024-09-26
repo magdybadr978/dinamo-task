@@ -9,7 +9,7 @@ export class Category {
     type: String,
     required: true,
     unique: true,
-    trime: true,
+    trim: true,
     lowercase: true,
   })
   name: string;
