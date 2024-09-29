@@ -6,6 +6,6 @@ export class Consumer {
   name: string;
   phone: string;
   password: string;
-  readonly _id: mongoose.Schema.Types.ObjectId;
+  readonly _id?: mongoose.Schema.Types.ObjectId;
 }
 export const consumerSchema = SchemaFactory.createForClass(Consumer);
