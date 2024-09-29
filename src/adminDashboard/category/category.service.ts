@@ -8,8 +8,8 @@ export class CategoryService {
   constructor(private readonly categoryRepository: CategoryRepository) {}
 
   // Create a new category
-  async createCategory(name: string): Promise<Category> {
-    return this.categoryRepository.create({ name } as Category);
+  async createCategory(name: string,description : string): Promise<Category> {
+    return this.categoryRepository.create({ name,description });
   }
 
   // Get all categories
@@ -23,10 +23,10 @@ export class CategoryService {
   }
 
   // Update a category by id
-  async updateCategory(id: string, newName: string) {
+  async updateCategory(id: string, newName: string , newDescription : String) {
     return this.categoryRepository.update(
       { _id: new Types.ObjectId(id) },
-      { name: newName },
+      { name: newName , description : newDescription },
       { new: true },
     );
   }

@@ -13,30 +13,30 @@ import { CategoryService } from './category.service';
 export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
 
-  @Post()
-  async createCategory(@Body('name') name: string) {
-    return this.categoryService.createCategory(name);
+  @Post('add')
+  async createCategory(@Body() body : {name : string , description :string}) {
+    return this.categoryService.createCategory(body.name,body.description);
   }
 
-  @Get()
+  @Get('getAll')
   async getAllCategories() {
     return this.categoryService.getAllCategories();
   }
 
-  @Get(':id')
+  @Get('getSpecific/:id')
   async getCategoryByName(@Param('id') id: string) {
     return this.categoryService.getCategoryById(id);
   }
 
-  @Put(':id')
+  @Put('update/:id')
   async updateCategory(
     @Param('id') id: string,
-    @Body('newName') newName: string,
+    @Body() body : {newName : string , newDescription : string},
   ) {
-    return this.categoryService.updateCategory(id, newName);
+    return this.categoryService.updateCategory(id,body.newName,body.newDescription);
   }
 
-  @Delete(':id')
+  @Delete('delete/:id')
   async deleteCategory(@Param('id') id: string) {
     return this.categoryService.deleteCategory(id);
   }

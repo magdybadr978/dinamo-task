@@ -18,8 +18,8 @@ export class Category {
     required : true,
     lowercase : true
   })
-  description : String 
-  readonly _id: mongoose.Schema.Types.ObjectId;
+  description : string 
+  readonly _id?: mongoose.Schema.Types.ObjectId;
 }
 
 export const categorySchema = SchemaFactory.createForClass(Category);
