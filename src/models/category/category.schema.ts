@@ -13,6 +13,12 @@ export class Category {
     lowercase: true,
   })
   name: string;
+  @Prop({
+    type : String,
+    required : true,
+    lowercase : true
+  })
+  description : String 
   readonly _id: mongoose.Schema.Types.ObjectId;
 }
 
