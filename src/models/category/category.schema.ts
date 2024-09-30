@@ -8,7 +8,6 @@ export class Category {
   @Prop({
     type: String,
     required: true,
-    unique: true,
     trim: true,
     lowercase: true,
   })
@@ -16,6 +15,7 @@ export class Category {
   @Prop({
     type : String,
     required : true,
+    trim: true,
     lowercase : true
   })
   description : string 
