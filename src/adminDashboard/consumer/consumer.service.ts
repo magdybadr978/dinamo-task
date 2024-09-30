@@ -28,13 +28,11 @@ export class consumerService {
   // Update Consumer data by Id
   async updateConsumer(
     id : string,
-    name: string,
-    phone: string,
-    password: string,
+    updateConsumerDTO : {name: string,phone: string,password: string}
   ) {
     return this.consumerRepository.update(
       { _id: new Types.ObjectId(id) },
-      { name: name, phone: phone, password: password },
+      updateConsumerDTO,
       { new: true },
     );
   }
