@@ -7,7 +7,6 @@ import { MongooseModule } from '@nestjs/mongoose';
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/dinamoDB'),
     AdminDashboardModule,
-    CategoryModule,
   ],
   controllers: [],
   providers: [],

@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { consumerService } from './consumer.service';
 
-@Controller('/daschBoard/admin')
+@Controller('dashboard-admin/consumer')
 export class ConsumerController {
   constructor(private readonly consumerService: consumerService) {}
 
@@ -22,21 +22,17 @@ export class ConsumerController {
       password: string;
     },
   ) {
-    return this.consumerService.createConsumer(
-      createConsumerDTO.name,
-      createConsumerDTO.phone,
-      createConsumerDTO.password,
-    );
+    return await this.consumerService.createConsumer(createConsumerDTO);
   }
 
   @Get('getAll')
   async getAllConsumers() {
-    return this.consumerService.getAllConsumers();
+    return await this.consumerService.getAllConsumers();
   }
 
   @Get('getSpecific/:id')
   async getSpecificConsumer(@Param('id') id: string) {
-    return this.consumerService.getConsumerById(id);
+    return await this.consumerService.getConsumerById(id);
   }
 
   @Put('updateConsumer/:id')
@@ -44,21 +40,21 @@ export class ConsumerController {
     @Param('id') id: string,
     @Body()
     updateConsumerDTO: {
-      newName: string;
-      newPhone: string;
-      newPassword: string;
+      name: string;
+      phone: string;
+      password: string;
     },
   ) {
     return this.consumerService.updateConsumer(
       id,
-      updateConsumerDTO.newName,
-      updateConsumerDTO.newPhone,
-      updateConsumerDTO.newPassword,
+      updateConsumerDTO.name,
+      updateConsumerDTO.phone,
+      updateConsumerDTO.password,
     );
   }
 
   @Delete('deleteConsumer/:id')
   async deleteConsumer(@Param('id') id: string) {
-    return this.consumerService.deleteConsumer(id);
+    return await this.consumerService.deleteConsumer(id);
   }
 }

@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { CategoryService } from './category.service';
 
-@Controller('categories')
+@Controller('category')
 export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
 
@@ -17,36 +17,32 @@ export class CategoryController {
   async createCategory(
     @Body() createCategoryDTO: { name: string; description: string },
   ) {
-    return this.categoryService.createCategory(
-      createCategoryDTO.name,
-      createCategoryDTO.description,
-    );
+    return await this.categoryService.createCategory(createCategoryDTO);
   }
 
   @Get('getAll')
   async getAllCategories() {
-    return this.categoryService.getAllCategories();
+    return await this.categoryService.getAllCategories();
   }
 
   @Get('getSpecific/:id')
   async getCategoryByName(@Param('id') id: string) {
-    return this.categoryService.getCategoryById(id);
+    return await this.categoryService.getCategoryById(id);
   }
 
   @Put('update/:id')
   async updateCategory(
     @Param('id') id: string,
-    @Body() updateCategoryDTO: { newName: string; newDescription: string },
+    @Body() updateCategoryDTO: { name: string; description: string },
   ) {
     return this.categoryService.updateCategory(
       id,
-      updateCategoryDTO.newName,
-      updateCategoryDTO.newDescription,
+      updateCategoryDTO
     );
   }
 
   @Delete('delete/:id')
   async deleteCategory(@Param('id') id: string) {
-    return this.categoryService.deleteCategory(id);
+    return await this.categoryService.deleteCategory(id);
   }
 }
