@@ -35,7 +35,7 @@ export class ConsumerController {
     return await this.consumerService.getConsumerById(id);
   }
 
-  @Put('updateConsumer/:id')
+  @Put('update/:id')
   async updateConsumer(
     @Param('id') id: string,
     @Body()
@@ -47,13 +47,11 @@ export class ConsumerController {
   ) {
     return this.consumerService.updateConsumer(
       id,
-      updateConsumerDTO.name,
-      updateConsumerDTO.phone,
-      updateConsumerDTO.password,
+      updateConsumerDTO
     );
   }
 
-  @Delete('deleteConsumer/:id')
+  @Delete('delete/:id')
   async deleteConsumer(@Param('id') id: string) {
     return await this.consumerService.deleteConsumer(id);
   }
